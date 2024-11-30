@@ -3,12 +3,8 @@ A Simple o1 Agent
 
 
 # Paper
-
 # Self-Guided Long-Chain Reasoning: Multi-Strategy Reasoning Generation and Self-Enhancement through Intelligent Agent Systems
-
 ## Chen Zhang (0 kid demi6od) demi6d@gmail.com
-
-
 ## Abstract
 With the increasing application of artificial intelligence in complex task processing, as well as the emergence of the OpenAI o1 model, how to effectively generate and utilize long-chain reasoning has become a key issue. This study proposes a system based on intelligent agents, aimed at autonomously generating and optimizing multi-step reasoning processes through an approach that does not fix the intermediate steps. Firstly, we directly use the original LLM (GPT4o) as a Process-based Reward Model (PRM) through prompts to evaluate the correctness and rationality of each step in the solution. Then, using different search strategies (such as tree search, beam search, etc.) combined with the language model (LLM), the agent independently decides on the strategy suitable for various tasks to most effectively solve the problem.
 
