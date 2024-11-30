@@ -1,2 +1,2 @@
-# SimAIAgent
-A Simple AI Agent
+# O1Agent
+A Simple o1 Agent
