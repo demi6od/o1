@@ -1,7 +1,10 @@
 # Self-Guided Long-Chain Reasoning: Multi-Strategy Reasoning Generation and Self-Enhancement through Intelligent Agent Systems}
+
 ## Chen Zhang (0 kid demi6od) demi6d@gmail.com
 
+
 ## Abstract
+
 With the increasing application of artificial intelligence in complex task processing, as well as the emergence of the OpenAI o1 model, how to effectively generate and utilize long-chain reasoning has become a key issue. This study proposes a system based on intelligent agents, aimed at autonomously generating and optimizing multi-step reasoning processes through an approach that does not fix the intermediate steps. Firstly, we directly use the original LLM (GPT4o) as a Process-based Reward Model (PRM) through prompts to evaluate the correctness and rationality of each step in the solution. Then, using different search strategies (such as tree search, beam search, etc.) combined with the language model (LLM), the agent independently decides on the strategy suitable for various tasks to most effectively solve the problem.
 The innovation lies in that this method does not solidify the specific method of generating intermediate steps into one form of thought chain implementation, but instead allows the large language model (LLM) to explore and decide which thinking steps or problem-solving strategies to adopt. Since LLM can learn various search strategies including tree search and beam search. Also, this method uses the same LLM through prompts to precisely judge the correctness of the thought steps. Through this method, we constructed long thought chain training data like system 2 of human brain. Trained models similar to o1, enabling them to be more efficient and accurate in complex reasoning. Preliminary results show that this model's autonomous system for generating problem-solving strategies performs excellently in multi-step reasoning tasks, surpassing traditional CoT methods.
 The main contribution: since there are many methods for solving complex problems, and tree search is not necessarily the best solution, allowing the LLM to autonomously learn existing various mathematical problem-solving methods enables the LLM to find more suitable problem-solving methods or strategies. Using the LLM itself as a reward model can effectively improve performance, because judging whether a solution is correct is usually simpler than generating the solution. This self-check method, similar to how humans scrutinize their own problem-solving processes, is always very beneficial, akin to the relationship between NP and P problems in computational complexity theory. This method relies entirely on the original LLM and can achieve self-evolution of the LLM through a continuous iterative process.
@@ -10,6 +13,7 @@ This research not only provides a new perspective for understanding and building
 Keywords: Artificial Intelligence, Long-chain reasoning, Intelligent agents, Process-based Reward Model, Tree search, Beam search, Large Language Model, Multi-step reasoning, System 2, Self-optimization, Cognitive functions, Computational complexity theory
 
 ## Introduction
+
 In the field of artificial intelligence, the capability to handle complex tasks effectively has become a cornerstone for developing advanced cognitive systems. With the advent of powerful models such as OpenAI's o1, there has been a significant shift in how these tasks are approached, particularly through the lens of long-chain reasoning. Long-chain reasoning, which involves the generation of extended sequences of reasoning steps, poses unique challenges and opportunities for AI systems. This paper introduces a novel intelligent agent-based system designed to autonomously generate and optimize multi-step reasoning processes without fixed intermediate steps.
 Historically, AI systems have relied heavily on predefined strategies such as tree search or beam search to navigate complex problem spaces. However, these strategies often come with limitations in flexibility and adaptability, particularly when facing problems that do not conform to expected patterns or require novel reasoning pathways. The limitations of these conventional methods prompt the need for a more adaptive approach, one that can learn and evolve without human intervention.
 The innovation in our approach lies in the integration of a large language model (LLM) with diverse strategies to autonomously work out the most effective problem-solving strategies. Instead of confining the reasoning process to specific strategies, the LLM explores and decides on the steps or strategies to employ. This capability is enhanced by the use of the LLM itself as a Process-based Reward Model (PRM), which evaluates the correctness and relevance of each reasoning step generated during the process.
@@ -18,13 +22,17 @@ The contributions of this study are twofold. Firstly, we demonstrate that LLMs c
 This research not only provides new insights into the construction of advanced AI systems with high-level cognitive functions but also opens new pathways for the self-optimization and evolution of LLMs. We anticipate that the mechanisms of self-reflection and self-evolution proposed in this study will play a crucial role in the future of AI research.
 
 ## Background and Related Work
+
 ### Large Language Models in Reasoning Tasks
+
 Large language models (LLMs) like GPT-3 and its successors have demonstrated remarkable capabilities in various natural language processing tasks, including text generation, comprehension, and reasoning. These models, trained on diverse and expansive corpora, possess a broad understanding of human language and a nuanced ability to generate coherent and contextually appropriate responses. Notably, their application in reasoning tasks has shown promising results, particularly in generating explanations and solving complex multi-step problems through methods like Chain of Thought (CoT) reasoning. However, while LLMs excel in generating plausible reasoning chains, the challenge remains in ensuring the accuracy and efficiency of these chains over extended interactions and complex scenarios.
 
 ### Existing Approaches to Long-Chain Reasoning
+
 Traditional approaches to long-chain reasoning in AI have primarily focused on structured methods such as tree search and beam search. These methods, while effective in constrained environments, often do not scale well with the ambiguity and open-endedness typical of real-world problems. For instance, tree search strategies can explore an immense number of potential paths, but they are computationally expensive and may not always converge on the most logical or concise solution path. Beam search, while more focused by limiting the breadth of exploration, can miss potentially correct solutions by prematurely narrowing the search space.
 
 ### Self-Optimizing Systems in AI
+
 The concept of self-optimizing systems, which are capable of improving their performance autonomously over time, is not new in the field of AI. These systems typically rely on reinforcement learning techniques where an agent learns from interactions with the environment to maximize a certain reward function. The self-optimization aspect of such systems has been explored in various contexts, including robotic navigation and automated game playing, where the system iteratively adjusts its strategies based on the outcomes of past actions. However, applying self-optimization to the domain of AI reasoning, particularly with LLMs, introduces unique challenges and opportunities. It requires not just the ability to adjust strategies but also to refine the underlying reasoning processes that the model employs.
 
 ### Limitations of Current Models
@@ -64,6 +72,7 @@ Dynamic Strategy Application: Depending on the nature of the sub-problem, differ
 Continuous Learning and Adaptation: As the agent progresses, it learns from the outcomes of previous sub-problems which strategies yield the best results, allowing for smarter adjustments in real-time.
 
 ### Self-Optimization Through PRM
+
 The PRM plays a critical role in our system's ability to self-optimize. It operates by evaluating the outputs generated by the LLM during the reasoning process. Feedback from the PRM is used to adjust the strategies employed by the agent, enhancing both the efficiency and accuracy of the reasoning process. This feedback loop enables the agent to learn from its experiences, refining its approach continuously:
 
 Feedback Mechanism: After executing a reasoning step, the PRM provides feedback based on the step's effectiveness.
