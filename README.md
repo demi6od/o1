@@ -1,6 +1,15 @@
-# O1Agent
+# O1 Agent
 A Simple o1 Agent
 
+A planning agent, which can generate o1 sft data.
+
+## Architecture Diagram
+![o1](images/o1.png)
+
+## Usage
+```shell
+python batch_run_agent_o1.py
+```
 
 # Paper
 # Self-Guided Long-Chain Reasoning: Multi-Strategy Reasoning Generation and Self-Enhancement through Intelligent Agent Systems
