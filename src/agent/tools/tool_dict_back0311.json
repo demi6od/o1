@@ -1,0 +1,161 @@
+{
+    "schema": {
+        "web_search": {
+            "type": "function",
+            "function": {
+                "name": "web_search",
+                "description": "This function acts as a search engine to retrieve a wide range of information from the web. It is capable of processing queries related to various topics and returning relevant results.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "query": {
+                            "type": "string",
+                            "description": "The search query used to retrieve information from the internet. While the primary language for queries is Chinese, queries in other languages are also accepted and processed."
+                        }
+                    },
+                    "required": ["query"]
+                },
+                "returns": {
+                    "type": "object",
+                    "description": "Returns a structured response containing search results. These results may include web links, summaries, and other relevant data extracted from the internet."
+                }
+            }
+        },
+        "create_booking": {
+            "type": "function",
+            "function": {
+                "name": "create_booking",
+                "parameters": {
+                    "type": "object",
+                    "title": "CreateBookingInput",
+                    "required": ["summary"],
+                    "properties": {
+                        "rrule": {
+                            "type": "string",
+                            "title": "Rrule",
+                            "description": "Recurring rule following the iCalendar (RFC 5545) standard, for example, 'FREQ=WEEKLY;UNTIL=20241231T000000Z;BYDAY=MO'."
+                        },
+                        "remind": {
+                            "type": "integer",
+                            "title": "Remind",
+                            "description": "The number of minutes before the event starts when a reminder should be sent, e.g., 15."
+                        },
+                        "summary": {
+                            "type": "string",
+                            "title": "Summary",
+                            "description": "Provides a brief title for the event, for instance, 'New Year Visit'."
+                        },
+                        "end_time": {
+                            "type": "string",
+                            "title": "End Time",
+                            "description": "Denotes the event's end time in YYYY-MM-DD HH:MM format, e.g., '2024-02-01 16:00'."
+                        },
+                        "start_time": {
+                            "type": "string",
+                            "title": "Start Time",
+                            "description": "Indicates the event's start time in YYYY-MM-DD HH:MM format, such as '2024-02-01 14:00'."
+                        },
+                        "description": {
+                            "type": "string",
+                            "title": "Description",
+                            "description": "Gives a detailed description of the event, like 'Visiting uncle's house with parents for New Year greetings'."
+                        }
+                    }
+                },
+                "description": "Creates an event on the current user's calendar, allowing for the scheduling of appointments, meetings, or any other types of events."
+            }
+        },
+        "delete_bookings": {
+            "type": "function",
+            "function": {
+                "name": "delete_bookings",
+                "parameters": {
+                    "type": "object",
+                    "title": "DeleteBookingInput",
+                    "required": ["uids"],
+                    "properties": {
+                        "uids": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Uids",
+                            "description": "A list of unique identifiers (UIDs) for the events to be deleted."
+                        }
+                    }
+                },
+                "description": "Deletes specified events using their unique identifiers (UIDs). To delete events, first retrieve their UIDs by calling the get_bookings function."
+            }
+        },
+        "get_bookings": {
+            "type": "function",
+            "function": {
+                "name": "get_bookings",
+                "parameters": {
+                    "type": "object",
+                    "title": "GetBookingsInput",
+                    "required": ["start_time", "end_time"],
+                    "properties": {
+                        "end_time": {
+                            "type": "string",
+                            "title": "End Time",
+                            "description": "Specifies the end time of the querying range in 'YYYY-MM-DD HH:MM' format, such as '2024-02-26 23:59'."
+                        },
+                        "start_time": {
+                            "type": "string",
+                            "title": "Start Time",
+                            "description": "Specifies the start time of the querying range in 'YYYY-MM-DD HH:MM' format, for instance, '2024-02-26 00:00'."
+                        }
+                    }
+                },
+                "description": "Retrieves events scheduled on the current user's calendar within a specified date range."
+            }
+        },
+        "update_booking": {
+            "type": "function",
+            "function": {
+                "name": "update_booking",
+                "parameters": {
+                    "type": "object",
+                    "title": "UpdateBookingInput",
+                    "required": ["uid"],
+                    "properties": {
+                        "uid": {
+                            "type": "string",
+                            "title": "Uid",
+                            "description": "The unique identifier (UID) of the event to be updated, which can be retrieved using `get_bookings`."
+                        },
+                        "summary": {
+                            "type": "string",
+                            "title": "Summary",
+                            "description": "The updated summary or title of the event."
+                        },
+                        "end_time": {
+                            "type": "string",
+                            "title": "End Time",
+                            "description": "The updated end time of the event in 'YYYY-MM-DD HH:MM' format, e.g., '2024-02-01 23:59'."
+                        },
+                        "start_time": {
+                            "type": "string",
+                            "title": "Start Time",
+                            "description": "The updated start time of the event in 'YYYY-MM-DD HH:MM' format, for example, '2024-02-01 00:00'."
+                        },
+                        "description": {
+                            "type": "string",
+                            "title": "Description",
+                            "description": "The updated detailed description of the event."
+                        }
+                    }
+                },
+                "description": "Updates an existing event using its unique identifier (UID). Ensure to retrieve the UID through `get_bookings` prior to attempting an update."
+            }
+        }
+    },
+    "server": {
+        "web_search": "http://10.198.7.38:12022/web_search",
+        "create_booking": "http://10.198.7.38:12025/create",
+		"delete_bookings": "http://10.198.7.38:12025/delete",
+		"get_bookings": "http://10.198.7.38:12025/get",
+		"update_booking": "http://10.198.7.38:12025/update"
+    }
+}

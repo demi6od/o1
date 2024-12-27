@@ -1,0 +1,29 @@
+{
+  "max_sub_task": 4,
+  "max_work_step": 3,
+  "unified_agent": false,
+
+  "max_execute_step": 5,
+
+  "short_mem_capacity": 3,
+  "long_mem_capacity": 100000,
+
+  "max_llm_input_tokens": 6000,
+
+  "working_mode": "execute",
+  "virtual_tool": false,
+
+  "code_agent_type": "tool",
+
+  "llm": "gpt",
+  "llm_server_ip": "10.142.5.67",
+
+  "tool_server": true,
+
+  "web_search_server_ip": "10.198.7.37",
+  "knowledge_retrieval_server_ip": "10.198.7.37",
+  "text2image_server_ip": "10.198.7.37",
+  "python_interpreter_server_ip": "10.198.7.37",
+
+  "task": "fc_search"
+}

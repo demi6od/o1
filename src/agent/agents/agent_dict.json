@@ -1,0 +1,50 @@
+{
+	"schema": {
+		"code_agent": {
+			"type": "agent",
+			"agent": {
+				"name": "code_agent",
+				"description": "This function serves as a sophisticated code-oriented agent, proficient in tackling and resolving issues via programming. Operating within a coding interpreter environment, it offers broad-ranging problem-solving skills. It accepts no parameters and can adapt its responses based on previous dialogue interactions.涉及与编程和软件开发相关的问题，包括：代码考题、代码生成、代码修复和优化、代码注释、代码转换、代码测试和调试等方面。"
+			}
+		},
+		"rag_agent": {
+			"type": "agent",
+			"agent": {
+				"name": "rag_agent",
+				"description": "各种知识性的问题，包括：客观问题、主观问题等。时效性比较强的问题，该类问题往往需要获取近期的信息才能回答。"
+			}
+		},
+		"vision_agent": {
+			"type": "agent",
+			"agent": {
+				"name": "vision_agent",
+				"description": "涉及图片理解或图片生成，包括：图片描述、图片问答和画图等相关的问题和需求。只要涉及画图，或者![IMAGE]字样优先调用这个agent。"
+			}
+		},
+		"data_agent": {
+			"type": "agent",
+			"agent": {
+				"name": "data_agent",
+				"description": "涉及表格数据的处理、数据分析、数据可视化等问题。"
+			}
+		},
+		"writing": {
+			"type": "agent",
+			"agent": {
+				"name": "writing",
+				"description": "涉及撰写各类文章、摘要、新闻报道、作文、演讲稿、工作报告、诗歌、小说、合同、公文、计划书等方面。"
+			}
+		},
+		"math_agent": {
+			"type": "agent",
+			"agent": {
+				"name": "math_agent",
+				"description": "This function serves as a sophisticated math agent, proficient in tackling and resolving math problems. It accepts no parameters and can adapt its responses based on previous dialogue interactions.涉及逻辑推理和数学领域的问题，包括：数学问题求解、数学推理、数学问答等方面。"
+			}
+		}
+	},
+	"server": {
+		"code_agent": "http://10.198.7.38:12026/code_agent",
+		"math_agent": "http://10.198.7.38:12027/math_agent"
+	}
+}

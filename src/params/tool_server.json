@@ -1,0 +1,8 @@
+{
+  "tool_server": true,
+  "web_search_server_ip": "10.198.7.37",
+  "knowledge_retrieval_server_ip": "10.198.7.37",
+  "text2image_server_ip": "10.198.7.37",
+  "python_interpreter_server_ip": "10.198.7.37",
+  "task": "tool"
+}

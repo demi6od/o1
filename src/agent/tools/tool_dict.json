@@ -1,0 +1,210 @@
+{
+	"schema": {
+		"web_search": {
+			"type": "function",
+			"function": {
+				"name": "web_search",
+				"description": "This function acts as a search engine to retrieve a wide range of information from the web. It is capable of processing queries related to various topics and returning relevant results.",
+				"parameters": {
+					"type": "object",
+					"properties": {
+						"query": {
+							"type": "string",
+							"description": "The search query used to retrieve information from the internet. While the primary language for queries is Chinese, queries in other languages are also accepted and processed."
+						}
+					},
+					"required": [
+						"query"
+					]
+				}
+			}
+		},
+		"python_interpreter": {
+			"type": "function",
+			"function": {
+				"name": "python_interpreter",
+				"description": "This function serves as a Python interpreter, executing provided Python code within certain constraints. It is designed to process a variety of Python scripts, with the final output expected to be assigned to a variable named 'result'.",
+				"parameters": {
+					"type": "object",
+					"properties": {
+						"code": {
+							 "type": "string",
+							 "description": "The Python code to be executed. It should be well-formed and follow standard Python syntax. Execution constraints apply, such as a maximum runtime duration. The output of the code should be stored in a variable named 'result'."
+						}
+					},
+					"required": ["code"]
+				}
+			}
+		},
+		"code_agent": {
+			"type": "function",
+			"function": {
+				"name": "code_agent",
+				"description": "This function serves as a sophisticated code-oriented agent, proficient in tackling and resolving issues via programming. Operating within a coding interpreter environment, it offers broad-ranging problem-solving skills. It accepts no parameters and can adapt its responses based on previous dialogue interactions.",
+				"parameters": {
+					"type": "object",
+					"properties": {},
+					"required": []
+				}
+			}
+		},
+		"math_agent": {
+			"type": "function",
+			"function": {
+				"name": "math_agent",
+				"description": "This function serves as a sophisticated math agent, proficient in tackling and resolving math problems. It accepts no parameters and can adapt its responses based on previous dialogue interactions.",
+				"parameters": {
+					"type": "object",
+					"properties": {},
+					"required": []
+				}
+			}
+		},
+		"create_booking": {
+			"function": {
+				"name": "create_booking",
+				"description": "Creates an event on the current user's calendar for appointments, meetings, or other types of events. If the user does not provide a title, they should be prompted again to ensure completeness. If the user specifies vague times like 'morning' or 'forenoon', these should be mapped to specific times later than the current time, e.g., midnight defaults to 1 AM, morning to 7 AM, and forenoon to 10 AM.",
+				"parameters": {
+					"type": "object",
+					"properties": {
+						"summary": {
+							"description": "Provides a brief title for the event, for instance, 'New Year Visit'. This parameter is mandatory. If not provided, ask the user to supply a title to ensure the booking is adequately described and identifiable.",
+							"type": "string"
+						},
+						"start_date": {
+							"description": "Indicates the event's start date in YYYY-MM-DD format, e.g., '2024-02-01'.",
+							"type": "string"
+						},
+						"start_time": {
+							"description": "Indicates the event's start time in HH:MM format, such as '14:00'.",
+							"type": "string"
+						},
+						"end_date": {
+							"description": "Indicates the event's end date in YYYY-MM-DD format, e.g., '2024-02-01'.",
+							"type": "string"
+						},
+						"end_time": {
+							"description": "Denotes the event's end time in HH:MM format, e.g., '16:00'.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Gives a detailed description of the event, like 'Visiting uncle's house with parents for New Year greetings'.",
+							"type": "string"
+						},
+						"remind": {
+							"description": "The number of minutes before the event starts when a reminder should be sent, e.g., 15. This is an optional parameter; if the user does not mention it, the reminder parameter should not be included. Do not fill in this parameter arbitrarily.",
+							"type": "integer"
+						},
+						"rrule": {
+							"description": "Recurring rule following the iCalendar (RFC 5545) standard, BYDAY expect weekday abbrevation, for example, 'FREQ=WEEKLY;UNTIL=20241231T000000Z;BYDAY=MO'.",
+							"type": "string"
+						}
+					},
+					"required": [
+						"summary"
+					]
+				}
+			},
+			"type": "function"
+		},
+		"delete_bookings": {
+			"function": {
+				"name": "delete_bookings",
+				"description": "Deletes specified events using their unique identifiers (UIDs). To delete events, first retrieve their UIDs by calling the get_bookings function. If the provided information uniquely identifies an event, then delete that event. If multiple events match the criteria, ask the user whether to delete 'all' or a specific event.",
+				"parameters": {
+					"type": "object",
+					"properties": {
+						"uids": {
+							"description": "A list of unique identifiers (UIDs) for the events to be deleted.",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"required": [
+						"uids"
+					]
+				}
+			},
+			"type": "function"
+		},
+		"get_bookings": {
+			"function": {
+				"name": "get_bookings",
+				"description": "Retrieves events scheduled on the current user's calendar within a specified date range. The user needs to provide at least one piece of information as a parameter. If no parameters are provided, ask the user for more information to proceed with the search operation.",
+				"parameters": {
+					"type": "object",
+					"properties": {
+						"start_time": {
+							"description": "Specifies the start time of the querying range in 'YYYY-MM-DD HH:MM' format, for instance, '2024-02-26 00:00'.",
+							"type": "string"
+						},
+						"end_time": {
+							"description": "Specifies the end time of the querying range in 'YYYY-MM-DD HH:MM' format, such as '2024-02-26 23:59'.",
+							"type": "string"
+						}
+					},
+					"required": [
+						"start_time",
+						"end_time"
+					]
+				}
+			},
+			"type": "function"
+		},
+		"update_booking": {
+			"function": {
+				"name": "update_booking",
+				"description": "Updates an existing event using its unique identifier (UID). Ensure to retrieve the UID through get_bookings before attempting an update. If the input information uniquely identifies an event, proceed with the update; if multiple events match the criteria, ask the user whether to update 'all' or a specific event.",
+				"parameters": {
+					"type": "object",
+					"properties": {
+						"uid": {
+							"description": "The unique identifier (UID) of the event to be updated, which can be retrieved using `get_bookings`.",
+							"type": "string"
+						},
+						"start_date": {
+							"description": "The updated start date of the event in YYYY-MM-DD format, e.g., '2024-02-01'.",
+							"type": "string"
+						},
+						"start_time": {
+							"description": "The updated start time of the event in HH:MM format, for example, '00:00'.",
+							"type": "string"
+						},
+						"end_date": {
+							"description": "The updated end date of the event in YYYY-MM-DD format, e.g., '2024-02-01'.",
+							"type": "string"
+						},
+						"end_time": {
+							"description": "The updated end time of the event in 'HH:MM' format, e.g., '23:59'.",
+							"type": "string"
+						},
+						"summary": {
+							"description": "The updated summary or title of the event.",
+							"type": "string"
+						},
+						"description": {
+							"description": "The updated detailed description of the event.",
+							"type": "string"
+						}
+					},
+					"required": [
+						"uid"
+					]
+				}
+			},
+			"type": "function"
+		}
+	},
+	"server": {
+		"web_search": "http://10.198.7.37:12022/web_search",
+		"python_interpreter": "http://10.198.7.37:12023/python_interpreter",
+		"code_agent": "http://10.198.7.37:12026/code_agent",
+		"math_agent": "http://10.198.7.37:12027/math_agent",
+		"create_booking": "http://10.198.7.37:12025/create",
+		"delete_bookings": "http://10.198.7.37:12025/delete",
+		"get_bookings": "http://10.198.7.37:12025/get",
+		"update_booking": "http://10.198.7.37:12025/update"
+	}
+}
